@@ -1,0 +1,52 @@
+<template>
+
+
+
+<lightning-card title="Karthik Information" icon-name="custom:custom14">
+
+    This is karthik, iam in second LWC
+
+    <lightning-button  label="Load Accounts"  onclick={onClickHandleButtonKarthik} ></lightning-button>
+
+ 
+
+    <div class="slds-m-around_medium">
+        <template for:each={accountsFromApex} for:item="acc">
+           <div key={acc.Id}>
+              {acc.Name}
+           </div>
+        </template>
+     </div>
+    
+
+    </lightning-card>
+
+
+    
+<lightning-card title="Karthik Information For DataTable" icon-name="custom:custom14">
+
+    This is karthik, iam in second LWC
+
+    
+
+    <lightning-button  label="Load Accounts For DataTable"  onclick={onClickHandleButtonKarthikDataTable} ></lightning-button>
+
+    <div class="slds-m-around_medium">
+     <!--   <template for:each={accountsFromApexDatatable} for:item="acc">
+           <div key={acc.Id}>
+             {acc.Name} ====   {acc.Type}  ====   {acc.Rating}  ===   {acc.Phone}
+           </div>
+        </template>  -->
+
+        <template if:true={accountsFromApexDatatable}>
+            <lightning-datatable data={accountsFromApexDatatable} columns={columns} key-field="Id">
+            </lightning-datatable>
+        </template>
+        <template if:true={error}>
+            {error}
+        </template>
+     </div>
+    
+
+    </lightning-card>
+</template>

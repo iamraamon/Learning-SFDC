@@ -1,0 +1,119 @@
+<aura:component Controller="LCCovidMain" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	
+     <aura:handler name="init"  value = "{!this}"  action="{!c.doAllCountriesInit}"  /> 
+    
+    <aura:attribute  name="allCountries"  type="Object[]" />    
+    
+    <aura:attribute name="isModalOpen" type="boolean" default="false"/>
+     
+     <aura:attribute  name="displayCountriesByCode"  type="Object[]" />    
+   
+         <div class="slds-m-around_xx-large">
+       <!-- <lightning:button variant="brand"
+                          label="What is Modal/PopUp Box?"
+                          title="What is Modal/PopUp Box?"
+                          onclick="{! c.openModel }" /> -->
+    
+      <aura:if isTrue="{!v.isModalOpen}">
+          
+            <!-- Modal/Popup Box starts here-->
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <!-- Modal/Popup Box Header Starts here-->
+                    <header class="slds-modal__header">
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{! c.closeModel }"
+                                              alternativeText="close"
+                                              variant="bare-inverse"
+                                              class="slds-modal__close"/>
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Display country details by code</h2>
+                    </header>
+                    <!--Modal/Popup Box Body Starts here-->
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                      
+                        
+                            <h1><u>Display country details by code </u></h1>
+    
+   <table  border="2" >
+    <tr>
+        <td>Country</td>
+        <td>CountryCode</td>
+        <td>Province</td>
+         <td>City</td>
+         <td>CityCode</td>
+         <td>Lat</td>
+         <td>Lon</td>
+         <td>Confirmed</td>
+         <td>Deaths</td>
+         <td>Recovered</td>
+         <td>Active</td>
+         <td>Date</td>
+       
+       </tr>
+   
+    <aura:iteration items = "{!v.displayCountriesByCode}"  var="countryCode" >
+    <tr>
+
+    
+        <td>{!countryCode.Country}</td>
+        <td>{!countryCode.CountryCode}</td>
+        <td>{!countryCode.Province}</td>
+         <td>{!countryCode.City}</td>
+        <td>{!countryCode.CityCode}</td>
+        <td>{!countryCode.Lat}</td>
+         <td>{!countryCode.Lon}</td>
+        <td>{!countryCode.Confirmed}</td>
+        <td>{!countryCode.Deaths}</td>
+         <td>{!countryCode.Recovered}</td>
+        <td>{!countryCode.Active}</td>
+        <td>{!countryCode.Date}</td>
+         </tr>
+   
+    </aura:iteration>
+       
+        </table>
+                        
+                    </div>
+                    <!--Modal/Popup Box Footer Starts here-->
+                    <footer class="slds-modal__footer">
+                        <lightning:button variant="neutral"
+                                          label="Cancel"
+                                          title="Cancel"
+                                          onclick="{! c.closeModel }"/>
+                      
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+          
+          
+    </aura:if>
+    </div>
+    
+    
+     <h1> <U>Display Countries from Covid services</U></h1>
+    <h1>---------------------------------------</h1>
+   
+   <table  border="2" >
+    <tr>
+        <td>Country</td>
+        <td>Slug</td>
+        <td>Code</td>
+         <td>View Covid Status</td>
+       
+       </tr>
+   
+    <aura:iteration items = "{!v.allCountries}"  var="country" >
+    <tr>
+        <td>{!country.Country}</td>
+        <td>{!country.Slug}</td>
+        <td>{!country.ISO2}</td>
+        <td><lightning:button variant="brand" label="View" title="View" onclick="{!c.doretrieveCountryInfoByCode}" value="{!country.ISO2}" > </lightning:button></td>
+       </tr>
+   
+    </aura:iteration>
+       
+        </table>
+    
+
+</aura:component>

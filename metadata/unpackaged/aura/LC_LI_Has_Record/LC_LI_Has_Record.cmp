@@ -1,0 +1,11 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+	
+    <aura:attribute name="recordId" type="String" />
+    
+    <H1> Nagaraj example to show hasRecordId  interface  to get record Id from parent window</H1>
+    
+    <br/>
+    <br/>
+    
+    <H1>  {!v.recordId} </H1>
+</aura:component>

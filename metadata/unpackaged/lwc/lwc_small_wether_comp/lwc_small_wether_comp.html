@@ -1,0 +1,23 @@
+<template>
+    
+        LWC small whether component
+    <lightning-input  type="text"       label ="City "       onchange={handleCity}    value={search_city} name="name"           required="true" ></lightning-input>
+    <lightning-button variant="brand" label="Search" onclick={handleSearch}></lightning-button>
+    <br/>
+    <br/>
+    
+ <!--    Whether Output :  {whetherResult} <br/> -->
+
+    <h6>=================================================</h6>
+
+    Whether Object :     {whetherResultObj} <br/>
+<!--
+    City Name : {whetherResultObj.location.name} <br/>
+    Whether Cond : <img src={whetherResultObj.current.condition.icon} /> <br/>
+    temp   : {whetherResultObj.current.temp_c}
+-->
+
+City Name : {resultCityName} <br/>
+Whether Cond : <img src={resultImage} /> <br/>
+temp   : {resultTemp}
+</template>

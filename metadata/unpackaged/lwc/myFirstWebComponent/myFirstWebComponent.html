@@ -1,0 +1,29 @@
+<template>
+    
+    <lightning-card title="ContactInformation" icon-name="custom:custom14">
+        <div class="slds-m-around_medium">
+           <template for:each={contacts} for:item="contact">
+              <div key={contact.Id}>
+                 {contact.Name}, {contact.Title}
+              </div>
+           </template>
+        </div>
+     </lightning-card>
+
+
+     <!--  get data from org -->
+     <h6>=========================================  get data from org ======================================</h6>
+
+     <lightning-button label="ClickFromApex"  onclick={handleGetContacts}></lightning-button>
+
+     <lightning-card title="ContactInformationFromApex" icon-name="custom:custom14">
+        <div class="slds-m-around_medium">
+           <template for:each={contactsFromApex} for:item="contact">
+              <div key={contact.Id}>
+                 {contact.Name}, {contact.Title}
+              </div>
+           </template>
+        </div>
+     </lightning-card>
+
+</template>

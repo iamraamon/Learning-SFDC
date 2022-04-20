@@ -1,0 +1,102 @@
+<template>  
+<center>
+    <div align="left" style="width:1000px;height:100%;padding:10px;border:10px  black ;">
+<div class="slds-box slds-theme_default">  
+<div class="slds-m-around_medium">  
+<lightning-input type="text" label="Name" onchange={onNameChange}></lightning-input>  
+<lightning-input type="tel" label="Phone" onchange={onPhoneChange}></lightning-input>  
+<lightning-input type="email" label="Email" onchange={onEmailChange}></lightning-input>  
+<lightning-textarea name="input3" label="Description" onchange={onDescriptionChange}  
+    placeholder="type here..."></lightning-textarea>  
+<lightning-input type="file" onchange={onFileUpload} required name="uploadFile" label="Upload File">  
+</lightning-input>  
+</div>  
+<div class="slds-align_absolute-center">    
+<lightning-button label="Save" onclick={saveContact}>  
+</lightning-button>  
+<lightning-button label="SavePLI" onclick={saveContactWithPLI}>  
+</lightning-button>  
+</div> 
+
+<div class="prod">
+<div class="tex"> 
+    <div class="slds-text-heading_medium">
+    Product Line Item 
+    </div>
+    </div>
+    </div>
+
+    <div class="align">
+        <div if:true={isLoaded} class="cstm-spinner">
+            <lightning-spinner alternative-text="Loading..."></lightning-spinner>
+        </div>
+                
+        <div class="slds-m-around--xx-large container-fluid">
+            <div class="slds-float_right slds-p-bottom_small">
+                <h1 class="slds-page-header__title">Add Row
+                        <lightning-icon icon-name="action:new" 
+                            alternative-text="Add Row" size="small" title="Add Row" onclick={addRow}>
+                        </lightning-icon>
+                    
+                </h1>
+            </div>
+            <div class="container-fluid">        
+                <table class="slds-table slds-table_bordered slds-table_cell-buffer"> 
+                    <thead>
+                        <tr class="slds-text-title_caps">
+                            <th scope="col">
+                                <div class="slds-truncate">#</div>
+                            </th>
+                            <th scope="col">
+                                <div class="slds-truncate" title="Quantity of Packages">Quantity of Packages</div>
+                            </th>
+                            <th scope="col">
+                                <div class="slds-truncate" title="Items">Items</div>
+                            </th>
+                            <th scope="col">
+                                <div class="slds-truncate" title="Item Description">Item Description</div>
+                            </th>
+                            <th scope="col">
+                                <div class="slds-truncate" title="Claimed Amount">Claimed Amount</div>
+                            </th>
+                            <th scope="col">
+                                <div class="slds-truncate" title="Action">Action</div>
+                            </th>
+                        </tr>
+                    </thead>   
+                    <tbody>      
+                        
+                        <template for:each={productList} for:item="pro" for:index="indx">
+                            <tr key={pro.key} id={pro.key}> 
+                                <td>{indx}</td>                                                  
+                                <td>
+                                    <lightning-input data-id={indx} label="Quantity" value={pro.Qty_Of_Packages__c} onchange={handleQtyChange} required></lightning-input>                               
+                                </td>
+                                <td>
+                                    <lightning-input data-id={indx} label="Item#" value={pro.Item__c} onchange={handleItemChange}  required></lightning-input>                        
+                                </td>
+                                <td>
+                                    <lightning-input data-id={indx} label="Description" value={pro.Item_Description__c} onchange={handleDesChange} required ></lightning-input>
+                                </td>
+                                <td>
+                                    <lightning-input data-id={indx} label="Claimed Amount" value={pro.Claim_Amount__c} onchange={handleAmountChange} required ></lightning-input>
+                                </td>
+                                <td>
+                                    <lightning-icon icon-name="action:delete" onclick={removeRow}
+                                                                            data-id={indx}       
+                                                                            title="Delete"></lightning-icon>
+
+                                </td>
+                            </tr>
+                        </template>
+                        
+                    </tbody>
+                </table>
+                </div>
+                </div>
+                </div> 
+
+</div>  
+</div>
+</center>
+</template>

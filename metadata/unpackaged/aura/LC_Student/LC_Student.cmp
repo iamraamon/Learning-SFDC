@@ -1,0 +1,57 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" 
+                controller="LC_Student_Controller">
+	
+     <!-- Component Handlers -->
+    <aura:handler name="init" value="{!this}" action="{!c.doStudentInit}"/>
+    
+     <aura:attribute name="all_student_records" type="Student__c[]" />
+    
+    <aura:attribute name="student_name" type="String" />
+     <aura:attribute name="student_id" type="String" />
+    <aura:attribute name="address" type="String" />
+     <aura:attribute name="contact_phone" type="String" />
+     <aura:attribute name="email" type="String" />
+     <aura:attribute name="city" type="String" />
+    <h1>First Component</h1>
+    
+    <!--   I need to create Student record   -->
+    
+     <lightning:input   name="student_name" label="Student Name"   value="{!v.student_name}"/>
+     <lightning:input name="student_id" label="Student Id"  readonly="true"  value="{!v.student_id}" />
+     <lightning:textarea name="address" label="Address"   value="{!v.address}"/>
+     <lightning:input name="contact_phone" label="Contact Phone"  value="{!v.contact_phone}" />
+     <lightning:input type="email" name="student_email" label="Email"  value="{!v.email}"/>
+     <lightning:input name="city" label="City"  value="{!v.city}"/>
+      <!-- Brand variant: Identifies the primary action in a group of buttons -->
+        <lightning:button variant="brand" label="Save" title="Save" onclick="{! c.handleSaveClick }" class="slds-m-left_x-small"></lightning:button>
+
+    <h1><U> Display Student Records</U></h1>
+    <table  border="5"  id="student_table"  width="100%">
+    <tr>
+        <td>Salesforce Id </td>
+         <td>Student Id</td>
+         <td>Name</td>
+         <td>Address</td>
+         <td>Phone</td>
+         <td>Email</td>
+         <td>City</td>
+       
+        </tr>
+    
+    <aura:iteration  items="{!v.all_student_records}"  var="StuObj"   >
+        <tr>
+        <td>{!StuObj.Id}</td>
+             <td>{!StuObj.Student_Id__c}</td>
+             <td>{!StuObj.Name}</td>
+            
+             <td>{!StuObj.address__C}</td>
+             <td>{!StuObj.Contact_No__c}</td> 
+            <td>{!StuObj.Student_EMail__c}</td> 
+            <td>{!StuObj.city__c}</td>
+        </tr>
+        
+        </aura:iteration>
+    
+    
+    </table>
+</aura:component>

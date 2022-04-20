@@ -1,0 +1,25 @@
+<apex:page Controller="VFP_LoginFlow_Consent">
+    
+<apex:form >
+
+<apex:actionFunction action="{!redirect}" name="OpenPage" reRender="pb">
+    <apex:param assignTo="{!Page}" value="" name="param1"/>
+</apex:actionFunction>
+
+
+    <apex:pageBlock id="pb">
+
+        <apex:pageBlockButtons >
+            
+             
+            <apex:commandButton value="Accept" onclick="OpenPage('Accept'); return false;" rendered="{!hasNotAcceptedTerms}"/>
+           
+        </apex:pageBlockButtons>
+        
+
+    </apex:pageBlock>
+
+
+</apex:form>
+    
+</apex:page>

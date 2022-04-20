@@ -1,0 +1,18 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global"                 
+                controller="SendSMSController">
+	
+<aura:attribute name="recordId" type="String" />
+    
+    <aura:attribute name="objectDesignFieldEmail" type="String" />
+    <aura:attribute name="objectDesignFieldPhone" type="String"/>
+    <aura:attribute name="objectDesignObject" type="String" />
+    <aura:attribute name="passThroughValue" type="String"/>
+    <aura:attribute name="record" type="Object"/>
+    
+<aura:attribute name="textMessageAttr" type="String" />
+    
+    
+   <B>Message Input : </B> <lightning:textarea  name="messageTextInput" value="{!v.textMessageAttr}" />
+    
+    <lightning:button name="sendButton" label="Send"  onclick="{!v.onClickSend}"  variant="brand"/>
+</aura:component>

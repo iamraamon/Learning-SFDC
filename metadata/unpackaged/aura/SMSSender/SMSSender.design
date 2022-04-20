@@ -1,0 +1,5 @@
+<design:component>
+	 <design:attribute name="objectDesignFieldEmail" label="Field Email" description="API name of the field Email." />
+     <design:attribute name="objectDesignFieldPhone" label="Field Phone" description="API name of the field Phone ." />
+     <design:attribute name="objectDesignObject" label="Object" description="API name of the Object." />
+</design:component>

@@ -1,0 +1,11 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	
+     <p>Parent component calls aura:method in child component</p>
+    <c:LC_Ram_Child aura:id="child" >
+        
+    </c:LC_Ram_Child>
+        
+        <lightning:button label="Call aura:method in child component"  name="Ram"  onclick="{! c.callAuraParentMethod}" />
+
+     
+</aura:component>

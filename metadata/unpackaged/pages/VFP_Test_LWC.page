@@ -1,0 +1,42 @@
+<apex:page showHeader="false" sidebar="false">
+    
+    <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" lang="en">
+        <head>
+            <meta charset="utf-8" />
+            <meta http-equiv="x-ua-compatible" content="ie=edge" />
+            <title>WBC Booking</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <!-- Import the Design System style sheet -->
+            <apex:slds />
+            
+            
+            <apex:includeLightning />
+            
+            <style>
+            </style>
+        </head>
+        <body>
+            <script src="https://iamraamon-dev-developer-edition.ap6.force.com/lightning/lightning.out.js"></script>
+            <div id='lightning' style=";margin-bottom:24px;"> </div>
+            <script type="text/javascript">
+                
+                $Lightning.use("c:Test_Form_App_Lwc", function() {
+                    $Lightning.createComponent("c:mySecondLWC",
+                                               { 	objectName: "Account"},
+                                               "lightning",
+                                               function(cmp) {
+                                                   console.log("Component created!");
+                                                   console.log('Display Lightning component in visualforce page');
+                                                   console.log(cmp);
+                                               }
+                                              );
+                    
+                }
+                              );
+            
+            </script>
+            
+            
+        </body>
+    </html>
+</apex:page>
